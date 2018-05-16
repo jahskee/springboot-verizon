@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Verizon Labs - Login</title>
+
+<!-- Bootstrap -->
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="/css/font-awesome.min.css" />
+<link href="/css/animate.min.css" rel="stylesheet" />
+<link href="/css/prettyPhoto.css" rel="stylesheet" />
+<link href="/css/main.css" rel="stylesheet" />
+<link href="/css/responsive.css" rel="stylesheet" />
+<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+<style>
+div.row.contact-wrap {
+	display: flex;
+	justify-content: center;
+}
+
+#main-contact-form>div {
+	text-align: center;
+	border: 1px solid lightgray;
+	padding: 20px;
+	width: 500px;
+	padding: 40px;
+	margin-bottom: 100px;
+}
+
+div.form-group {
+	text-align: left;
+}
+
+#header>nav>div>div.collapse.navbar-collapse.navbar-right>ul>li.active>a
+	{
+	background: #1c1c1c;
+}
+
+#login-title {
+	font-size: 22px;
+	color: darkgray;
+}
+
+#contact-page>div>div.row.contact-wrap>form>div {
+	width: 400px;
+	text-align: center;
+	border: 1px solid lightgray;
+	padding: 30px 40px;
+	color: darkgray;
+}
+</style>
+</head>
+<body class="homepage">
+	<header id="header">
+		<nav class="navbar navbar-fixed-top" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">Verizon Labs</a>
+				</div>
+
+				<div class="collapse navbar-collapse navbar-right">
+					<ul class="nav navbar-nav">
+						<li><a href="/index.html">Home</a></li>					
+						<li><a href="/about-us.html"> About Us</a>
+						<li><a href="/services.html">Services</a></li>
+						<li><a href="/portfolio.html">Portfolio</a></li>
+						<li><a href="/blog.html">Blog</a></li>
+						<li><a href="/contact-us.html">Contact</a></li>
+						<li><a href="/account/page1">My Account</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--/.container-->
+		</nav>
+		<!--/nav-->
+
+	</header>
+	<!--/header-->
+
+
+	<section id="contact-page">
+		<div class="container">
+			<div class="center">
+				<h2>Drop Your Message</h2>
+				<p class="lead">Sed do eiusmod tempor incididunt ut labore et
+					dolore magna aliqua.</p>
+			</div>
+			<div class="row contact-wrap">
+				<div class="status alert alert-success" style="display: none"></div>
+
+				<form role="form" th:action="@{/login}" method="post">
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+					<div class="col-sm-5 col-sm-offset-1">
+						<span id="login-title">Member Login </span>
+						<div class="form-group">
+							<label>User Name</label> <input type="text" name="username"
+								class="form-control" required="required" />
+						</div>
+
+
+						<div class="form-group">
+							<label>Password</label> <input type="password" name="password"
+								class="form-control" required="required" />
+						</div>
+
+						<button type="submit" name="submit" class="btn btn-primary btn-lg"
+							required="required">Login</button>
+
+						<#if Session.SPRING_SECURITY_LAST_EXCEPTION?? && Session.SPRING_SECURITY_LAST_EXCEPTION.message?has_content>
+							<br/> <br/>
+							Invalid username and password. 
+						</#if>
+
+					</div>
+
+				</form>
+			</div>
+			<!--/.row-->
+		</div>
+		<!--/.container-->
+	</section>
+	<!--/#contact-page-->
+
+	<section id="bottom">
+		<div class="container wow fadeInDown" data-wow-duration="1000ms"
+			data-wow-delay="600ms">
+			<div class="row">
+				<div class="col-md-3 col-sm-6">
+					<div class="widget">
+						<h3>Company</h3>
+						<ul>
+							<li><a href="#">About us</a></li>
+							<li><a href="#">We are hiring</a></li>
+							<li><a href="#">Meet the team</a></li>
+							<li><a href="#">Copyright</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--/.col-md-3-->
+
+				<div class="col-md-3 col-sm-6">
+					<div class="widget">
+						<h3>Support</h3>
+						<ul>
+							<li><a href="#">Faq</a></li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">Forum</a></li>
+							<li><a href="#">Documentation</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--/.col-md-3-->
+
+				<div class="col-md-3 col-sm-6">
+					<div class="widget">
+						<h3>Developers</h3>
+						<ul>
+							<li><a href="#">Web Development</a></li>
+							<li><a href="#">SEO Marketing</a></li>
+							<li><a href="#">Theme</a></li>
+							<li><a href="#">Development</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--/.col-md-3-->
+
+				<div class="col-md-3 col-sm-6">
+					<div class="widget">
+						<h3>Our Partners</h3>
+						<ul>
+							<li><a href="#">Adipisicing Elit</a></li>
+							<li><a href="#">Eiusmod</a></li>
+							<li><a href="#">Tempor</a></li>
+							<li><a href="#">Veniam</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--/.col-md-3-->
+			</div>
+		</div>
+	</section>
+	<!--/#bottom-->
+
+	<div class="top-bar">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="social">
+						<ul class="social-share">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+							<li><a href="#"><i class="fa fa-skype"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/.container-->
+	</div>
+	<!--/.top-bar-->
+
+	<footer id="footer" class="midnight-blue">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					&copy; 2015 <a target="_blank" href="http://bootstraptaste.com/"
+						title="Free Twitter Bootstrap WordPress Themes and HTML templates">bootstraptaste</a>.
+					All Rights Reserved.
+				</div>
+				<!-- 
+                    All links in the footer should remain intact. 
+                    Licenseing information is available at: http://bootstraptaste.com/license/
+                    You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=Gp
+                -->
+				<div class="col-sm-6">
+					<ul class="pull-right">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Faq</a></li>
+						<li><a href="#">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--/#footer-->
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.prettyPhoto.js"></script>
+	<script src="js/jquery.isotope.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
